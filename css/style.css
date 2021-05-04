@@ -1,0 +1,13 @@
+
+main {
+    background: linear-gradient(30deg, #3dc0c0, #5bceae);
+
+    border-radius: 4rem;
+    height: 30rem;
+
+    box-shadow: 4px 4px 29px 0px #898E77;
+}
+
+section > div {
+
+}
