@@ -5,49 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Tip</title>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <main class="container col-md-4 offset-4 bg-info mt-5">
-        <p class="text-center text-white font-weight-bold">Quick Tip</p>
-        <section class="content bg-white my-5 rounded">
-            <div class="input-group ">
-                <label for="billInput" class="col-form-label col-md-4 mt-2">Bill</label>
-                <input type="text" id="billInput" placeholder="Your bill" class="form-control col-md-8 mt-2 mr-3">
+    <main id="mainContainer" oninput="update()">
+        <h1>Quick Tip</h1>
+        <section >
+            <div class="bill-div">
+                <label for="billInput" >Bill</label>
+                <input type="number" id="billInput" placeholder="Your bill">
             </div>
 
-            <div id="tipInputDiv" class="mt-2">
-                <div id="tipLabel">
-                    <label for="tipRange" class="col-md-4 mb-0">Select tip</label>
-                    <span class="float-right mx-3">0%</span>
+            <div id="tipInputDiv">
+                <div id="tipLabel" class="space-between">
+                    <label for="tipRange" >Select tip</label>
+                    <span >0%</span>
                 </div>
-                <div class="mx-3">
-                    <input id="tipRange" type="range" class="custom-range"
-                           min="0" max="10">
+                <div >
+                    <input id="tipRange" type="range"
+                           min="0" max="10" class="range">
                 </div>
             </div>
 
-            <div id="tipTotal" class="my-2 mx-3">
+            <div id="tipTotal" class="space-between">
                 <span>Tip</span>
-                <span class="float-right">10€</span>
+                <span >10€</span>
             </div>
-            <hr class="mx-3">
+            <hr >
 
-            <div id="billTotal" class="mt-5 mx-3">
+            <div id="billTotal" class="space-between total">
                 <span>Total</span>
-                <span class="float-right">10€</span>
+                <span >10€</span>
             </div>
 
         </section>
 
 
-        <section class="split-div bg-white my-5 rounded">
-            <p >Split</p>
-
+        <section >
+            <div>
+                <div class="space-between">
+                    <label for="splitRange">Split</label>
+                    <span>1 person</span>
+                </div>
+                <input id="splitRange" type="range" min="1" max="10" class="range">
+            </div>
+            <div id="billEachDiv" class="space-between">
+                <span>Bill each</span>
+                <span>10€</span>
+            </div>
+            <div id="tipEach" class="space-between">
+                <span>Tip each</span>
+                <span>0€</span>
+            </div>
         </section>
     </main>
+
+    <script>
+        function update() {
+            let billValue = document.getElementById('billInput').value;
+            let tipRangeValue = document.getElementById('tipRange').value;
+            let splitRangeValue = document.getElementById('splitRange').value;
+            console.log(billValue);
+            console.log(tipRangeValue);
+            console.log(splitRangeValue);
+
+        }
+    </script>
 
 
 </body>
