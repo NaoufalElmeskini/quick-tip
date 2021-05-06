@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <main id="mainContainer" oninput="update()">
+    <main id="mainContainer">
         <h1>Quick Tip</h1>
         <section >
             <div class="bill-div">
@@ -23,7 +23,7 @@
             <div id="tipInputDiv">
                 <div id="tipLabel" class="space-between">
                     <label for="tipRange" >Select tip</label>
-                    <span >0%</span>
+                    <span id="tipSelected">0%</span>
                 </div>
                 <div >
                     <input id="tipRange" type="range"
@@ -33,13 +33,13 @@
 
             <div id="tipTotal" class="space-between">
                 <span>Tip</span>
-                <span >10€</span>
+                <span id="tipValue">10€</span>
             </div>
             <hr >
 
             <div id="billTotal" class="space-between total">
                 <span>Total</span>
-                <span >10€</span>
+                <span id="totalValue">10€</span>
             </div>
 
         </section>
@@ -49,7 +49,7 @@
             <div>
                 <div class="space-between">
                     <label for="splitRange">Split</label>
-                    <span>1 person</span>
+                    <span id="splitValueSelected">1 person</span>
                 </div>
                 <input id="splitRange" type="range" min="1" max="10" class="range">
             </div>
@@ -66,14 +66,30 @@
 
     <script>
         function update() {
-            let billValue = document.getElementById('billInput').value;
-            let tipRangeValue = document.getElementById('tipRange').value;
-            let splitRangeValue = document.getElementById('splitRange').value;
-            console.log(billValue);
-            console.log(tipRangeValue);
-            console.log(splitRangeValue);
+            let MAXTIPRANGE = 10;
+            let CURRENCY = "€";
+            let PERSENT = "%";
+
+            let billValue = Number(document.getElementById('billInput').value);
+            let tipPersentValue = document.getElementById('tipRange').value * 100 / MAXTIPRANGE;
+            let tipTotalInEuros = billValue * tipPersentValue / 100;
+            let totalToPay = billValue + tipTotalInEuros;
+
+            console.log({billValue, totalToPay});
+
+            let selectTipSpan = document.getElementById("tipSelected");
+            selectTipSpan.textContent = tipPersentValue + PERSENT;
+
+            let tipValueSpan = document.getElementById("tipValue");
+            tipValueSpan.textContent = tipTotalInEuros + CURRENCY;
+
+            let totalValueSpan = document.getElementById("totalValue");
+            totalValueSpan.textContent = totalToPay + CURRENCY;
 
         }
+
+        let mainContainer = document.getElementById('mainContainer');
+        mainContainer.addEventListener("input", update);
     </script>
 
 
