@@ -83,13 +83,16 @@ input[type="number"] {
     outline-color: #5bceae;
 }
 
-.range::-moz-range-thumb {
-    /*-webkit-appearance: none;*/
+/*.range::-moz-range-thumb {*/
+/*    !*-webkit-appearance: none;*!*/
 
-    width: 1.2rem;
-    width: 2.2rem;
-    border-radius: 50%;
-    background: #3dc0c0;
-    cursor: pointer;
-}
+/*    width: 1.2rem;*/
+/*    width: 2.2rem;*/
+/*    border-radius: 50%;*/
+/*    background: #3dc0c0;*/
+/*    cursor: pointer;*/
+/*}
+*/
+
+
 
